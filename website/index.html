@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rider Safety with Drowsiness Detection</title>
+	<style>
+		body {
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #121212;
+			color: #fff;
+			margin: 0;
+			padding: 0;
+		}
+		header {
+			background-color: #202020;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 999;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			box-shadow: 0px 3px 5px #1c1c1c;
+		}
+		h1 {
+			margin: 0;
+			font-size: 36px;
+			letter-spacing: 2px;
+		}
+		nav ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		nav li {
+			margin: 0 20px;
+		}
+		nav a {
+			color: #fff;
+			text-decoration: none;
+			font-size: 18px;
+			letter-spacing: 1px;
+			transition: all 0.2s ease-in-out;
+		}
+		nav a:hover {
+			color: #0072ff;
+		}
+		main {
+			margin-top: 100px;
+			padding: 20px;
+			max-width: 800px;
+			margin: auto;
+			text-align: justify;
+			line-height: 1.6;
+			font-size: 18px;
+		}
+		h2 {
+			font-size: 28px;
+			margin-top: 40px;
+			margin-bottom: 20px;
+			letter-spacing: 1px;
+		}
+		ul {
+			list-style: disc;
+			margin-left: 20px;
+		}
+		footer {
+			background-color: #202020;
+			color: #fff;
+			padding: 20px;
+			text-align: center;
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			box-shadow: 0px -3px 5px #1c1c1c;
+		}
+		footer p {
+			margin: 0;
+			font-size: 16px;
+			letter-spacing: 1px;
+		}
+		footer a {
+			color: #fff;
+			text-decoration: none;
+			font-size: 14px;
+			letter-spacing: 1px;
+			transition: all 0.2s ease-in-out;
+		}
+		footer a:hover {
+			color: #0072ff;
+		}
+		#banner {
+			background-image: url('https://images.unsplash.com/photo-1523474253046-7c14d38a26e7');
+			background-size: cover;
+			background-position: center;
+			height: 400px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			padding: 20px;
+			box-shadow: 0px 3px 5px #1c1c1c;
+}
+#banner h1 {
+font-size: 56px;
+margin: 0;
+color: #fff;
+text-shadow: 1px 1px 2px #000;
+letter-spacing: 2px;
+}
+#banner p {
+font-size: 24px;
+margin: 20px 0 0 0;
+color: #fff;
+text-shadow: 1px 1px 2px #000;
+letter-spacing: 1px;
+}
+#features {
+background-color: #303030;
+color: #fff;
+padding: 40px;
+box-shadow: 0px 3px 5px #1c1c1c;
+}
+#features h2 {
+color: #fff;
+text-align: center;
+font-size: 36px;
+margin-top: 0;
+margin-bottom: 40px;
+letter-spacing: 1px;
+}
+#features p {
+color: #fff;
+font-size: 18px;
+margin-bottom: 20px;
+text-align: center;
+line-height: 1.6;
+}
+#benefits {
+background-color: #202020;
+color: #fff;
+padding: 40px;
+box-shadow: 0px 3px 5px #1c1c1c;
+}
+#benefits h2 {
+color: #fff;
+font-size: 36px;
+margin-top: 0;
+margin-bottom: 40px;
+letter-spacing: 1px;
+}
+#benefits ul {
+margin: 0;
+padding: 0;
+}
+#benefits li {
+color: #fff;
+font-size: 18px;
+margin-bottom: 10px;
+line-height: 1.6;
+}
+#contact {
+background-color: #303030;
+color: #fff;
+padding: 40px;
+box-shadow: 0px 3px 5px #1c1c1c;
+}
+#contact h2 {
+color: #fff;
+font-size: 36px;
+margin-top: 0;
+margin-bottom: 40px;
+letter-spacing: 1px;
+}
+#contact p {
+color: #fff;
+font-size: 18px;
+margin-bottom: 20px;
+line-height: 1.6;
+}
+.btn{
+	margin-top: 20px;
+	height:75px;
+	width:200px;
+	border-radius:10px;
+	background-color: lightblue;
+	font-weight: bold;
+	font-size: 20px;
+	box-shadow: 6px 6px 10px rgb(64, 54, 54),-6px -6px 10px rgb(64, 54, 54);
+}
+.btn:hover{
+	transform: scale(0.9);
+	transition: all 0.3s ease-in;
+	cursor: pointer;
+}
+.btn:focus{
+	border:red solid 1.5px;
+	transform: scale(1);
+	transition: all 0.2s ease-out;
+}
+.btn a{
+	text-decoration: none;
+	color: black;
+}
+.btn:hover a{
+	color: blue;
+}
+
+</style>
+
+</head>
+<body>
+	<script src="pjk.js"></script>
+	<header>
+		<h1>Rider Safety with Drowsiness Detection</h1>
+		<nav>
+			<ul>
+				<li><a href="#features">Features</a></li>
+				<li><a href="#benefits">Benefits</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section id="banner">
+			<h1>Stay Awake. Stay Safe.</h1>
+			<p>Rider Safety with Drowsiness Detection helps you stay alert and focused on the road.</p>
+			
+			<button onclick="runCommand()" class="btn"><a href="execute.bat">START DRIVING!</a></button>
+
+				
+		</section>
+		<section id="features">
+			<h2>Features</h2>
+			<p>Rider Safety with Drowsiness Detection is a cutting-edge safety system that uses advanced technology to detect when a rider is becoming drowsy or distracted. Some of its features include:</p>
+			<ul>
+			<li>Real-time monitoring of rider's eye movement and facial expressions</li>
+			<li>Alerts for drowsiness or distraction</li>
+			<li>Adjustable sensitivity for personalized use</li>
+			<li>Compatible with any motorcycle helmet</li>
+			</ul>
+			</section>
+			<section id="benefits">
+			<h2>Benefits</h2>
+			<ul>
+			<li>Increased safety on the road</li>
+			<li>Reduced risk of accidents caused by drowsiness or distraction</li>
+			<li>Personalized settings for maximum effectiveness</li>
+			<li>Easy installation and compatibility with any motorcycle helmet</li>
+			</ul>
+			</section>
+			<section id="contact">
+			<h2>Contact Us</h2>
+			<p>Interested in learning more about Rider Safety with Drowsiness Detection? Contact us today!</p>
+			<form action="#" method="post">
+			<label for="name">Name:</label>
+			<input type="text" id="name" name="name"><br>
+			<label for="email">Email:</label>
+			<input type="email" id="email" name="email"><br>
+			<label for="message">Message:</label><br>
+			<textarea id="message" name="message"></textarea><br>
+			<input type="submit" value="Submit">
+			</form>
+			</section>
+			</main>
+			<footer>
+			<p>© 2023 Team TroubleShooters</p>
+			</footer>
+			</body>
+			</html>
+			
+
+			
